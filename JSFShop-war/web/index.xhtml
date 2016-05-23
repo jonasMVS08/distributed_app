@@ -27,10 +27,11 @@
                         </div>
                         <ui:repeat var="category" value="#{categoryManager.categories}">
                             <div class="categoryBox">
-                                <a href="category.xhtml?id=#{category.cat_type}">
+                                <h:link outcome="category.xhtml">
+                                    <f:param name="catId" value="#{category.cat_type}"/>
                                     <span class="categoryLabelText">${category.media}</span>
                                     <img src="${initParam.categoryImagePath}#{category.cat_type}.jpg" alt="#{category.media}"/>
-                                </a>
+                                </h:link>
                             </div>
                         </ui:repeat>          
                     </h:form>    

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="title">
+                detail
+            </ui:define>
+
+            <ui:define name="content">
+                <div id="detailLeftColumn">
+                
+                <ui:repeat var="category" items="#{categories}">
+                    <c:choose>
+                        <c:when test="${category.id == pageContext.request.queryString}">
+                            <div id="selectedCategory">
+                                <span>${category.media}</span>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="categoryBoxLeft">
+                                <a href="category?${category.id}" class="categoryButton">
+                                    <div>${category.media}</div>
+                                </a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </ui:repeat>
+            </div>
+            <div id="detailRightColumn">
+                <div id="imageColumn">
+                    <img class="detail" src="${initParam.productImagePath}${productDetails.title}.jpg"/>
+                </div>
+                <div id="detailColumn">
+                    <c:choose>
+                        <c:when test="${'B' == productCategory}">
+                            <p><strong>Title: </strong> ${productDetails.title}</p>                            
+                            <p><strong>Author: </strong> ${productDetails.author}</p>
+                            <p><strong>ISBN: </strong> ${productDetails.isbn}</p>
+                            <p><strong>Genre: </strong> ${productDetails.genre}</p>
+                            <p><strong>Price: </strong> &euro;${productDetails.price}</p>
+                            <p><strong>Published </strong> ${productDetails.published}</p>
+                            <p><strong>Pages: </strong> ${productDetails.pages}</p>
+                        </c:when>
+                        <c:when test="${'C' == productCategory}">
+                            <p><strong>Album:</strong> ${productDetails.title}</p>
+                            <p><strong>Artist:</strong> ${productDetails.artist}</p>
+                            <p><strong>Genre:</strong> ${productDetails.genre}</p>
+                            <p><strong>Price:</strong> &euro;${productDetails.price}</p>
+                            <p><strong>Published:</strong> ${productDetails.published}</p>
+                            <c:forEach var="song" items="${tracks}">
+                                ${song}<br>
+                            </c:forEach>
+                        </c:when>
+                        <c:when test="${'D' == productCategory}">
+                            <p><strong>Title: </strong> ${productDetails.title}</p>                            
+                            <p><strong>Director: </strong> ${productDetails.director}</p>
+                            <p><strong>Genre: </strong> ${productDetails.genre}</p>
+                            <p><strong>Price: </strong> &euro;${productDetails.price}</p>
+                            <p><strong>Published:</strong> ${productDetails.published}</p>
+                        </c:when>
+                        <c:otherwise>
+                            <p><strong>Title: </strong> ${productDetails.title}</p>                            
+                            <p><strong>Publisher: </strong> ${productDetails.publisher}</p>
+                            <p><strong>Console Type:</strong> ${prductDetails.consoleType}</p>
+                            <p><strong>Genre: </strong> ${productDetails.genre}</p>
+                            <p><strong>Price: </strong> &euro;${productDetails.price}</p>
+                            <p><strong>Published:</strong> ${productDetails.published}</p>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -6,8 +6,11 @@
 package contoller;
 
 import entity.Category;
+import entity.Cd;
 import entity.MediaType;
+import entity.Track;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,7 +18,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import session.CategoryFacade;
+import session.CdFacade;
 import session.MediaTypeFacade;
+import session.TrackFacade;
 
 /**
  *
@@ -32,13 +37,17 @@ public class CategoryManager implements Serializable{
     CategoryFacade categoryFacade;
     @EJB
     MediaTypeFacade mediaTypeFacade;
+    @EJB
+    CdFacade cdFacade;
+    @EJB
+    TrackFacade trackFacade;
     
     @ManagedProperty(value="#{param.catId}")
     private char catId;
     
     @PostConstruct
     public void init() {
-        categories = categoryFacade.findAll();
+        categories = categoryFacade.findAll();   
     }
     
     public List<Category> getCategories() {
@@ -54,7 +63,7 @@ public class CategoryManager implements Serializable{
     }
         
     public List<MediaType> getMediaTypes() {        
-        //mediaTypes = mediaTypeFacade.getCollection(catId);
+        mediaTypes = mediaTypeFacade.getCollection(catId);
         return mediaTypes;
     }
     

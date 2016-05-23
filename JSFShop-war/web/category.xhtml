@@ -1,22 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
         <ui:composition template="./template.xhtml">
             <ui:define name="title">
-                Book
+                MultimediaShop
             </ui:define>
             <ui:define name="content">
                 <div id="categoryLeftColumn">
-                <ui:repeat var="category" value="#{categoryManager.categories}">
-                    <div id="selectedCategory">
-                        <span>#{category.media}</span>
-                    </div>
-                </ui:repeat>
+                    <ui:repeat var="category" value="#{categoryManager.categories}">
+                        <h:panelGroup layout="block" rendered="#{category.cat_type == categoryManager.catId}" id="selectedCategory">
+                            <div id="selectedCategory">
+                                <span>#{category.media}</span>
+                            </div>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" rendered="#{category.cat_type != categoryManager.catId}" id="selectedCategory">
+                            <div class="categoryBoxLeft">
+                                <h:link outcome="category.xhtml">
+                                    <f:param name="catId" value="#{category.cat_type}"/>
+                                    <div>${category.media}</div>
+                                </h:link>
+                            </div>
+                        </h:panelGroup>
+                    </ui:repeat>
                 </div>
-                
+
                 <div id="categoryRightColumn">
                     <table id="tableCategory">
                         <ui:repeat var="mediatype" value="#{categoryManager.mediaTypes}">
@@ -38,7 +50,7 @@
                                         <input type="hidden" name="productId" value="#{mediatype.id}"/>
                                         <input type="submit" value="add to cart"/>
                                     </form>
-                                        <form  method="get">
+                                    <form  method="get">
                                         <input type="hidden" name="productId" value="#{mediatype.id}"/>
                                         <input type="submit" value="details"/>
                                     </form>
@@ -47,7 +59,7 @@
                         </ui:repeat>
                     </table>
                 </div>
-                
+
             </ui:define>
 
         </ui:composition>
