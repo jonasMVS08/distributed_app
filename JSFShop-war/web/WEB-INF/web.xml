@@ -4,6 +4,14 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    <context-param>
+        <param-name>categoryImagePath</param-name>
+        <param-value>resources/img/categories/</param-value>
+    </context-param>
+    <context-param>
+        <param-name>productImagePath</param-name>
+        <param-value>resources/img/products/</param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30

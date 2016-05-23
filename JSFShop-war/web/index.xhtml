@@ -27,9 +27,9 @@
                         </div>
                         <ui:repeat var="category" value="#{categoryManager.categories}">
                             <div class="categoryBox">
-                                <a href="category?#{categoryManager.categories.get(1)}">
-                                    
-                                    <img src="/resources/img/categories/#{categoryManager.categories[cat_type]}.jpg" alt="#{categoryManager.media}"/>
+                                <a href="category.xhtml?id=#{category.cat_type}">
+                                    <span class="categoryLabelText">${category.media}</span>
+                                    <img src="${initParam.categoryImagePath}#{category.cat_type}.jpg" alt="#{category.media}"/>
                                 </a>
                             </div>
                         </ui:repeat>          

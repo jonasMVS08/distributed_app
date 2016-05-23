@@ -24,9 +24,9 @@ and open the template in the editor.
 
 .categoryBox {
     height: 176px;
-    width: 212px;
+    width: 210px;
     margin: 21px 14px 6px;
-    float: inherit;
+    float: left;
     background: #476A6F;
 }
 

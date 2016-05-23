@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-mei-2016, 14:48:14
+    Author     : Jonas
+*/
+
+#categoryLeftColumn{
+    height: 450px;
+    width: 30%;
+    float: left;
+    background: #C5C9A4;
+}
+
+#categoryRightColumn{
+    height:450px;
+    width: 70%;
+    float: left;
+    background: #F5EDCC;
+}
+
+.categoryBoxLeft{
+    font-size: 20px;
+    height: 70px;
+    width: 160px;
+    background: #7EB09B;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 70px;
+    text-align: center;
+}
+
+.categoryLabelTextLeft {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+#selectedCategory{
+    font-size: 20px;
+    height: 70px;
+    width: 180px;
+    background: #519E8A;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 70px;
+    text-align: center;
+}
+
+#tableCategory{
+    width: 100%;
+    height: 100%;
+    border-spacing: 0px;
+}
+
+.productDescription{
+    font-size: 15px;
+    margin-top: 0px;
+}
+
+#categoryTitle{
+    text-align: center;
+    line-height: 50px;
+    font-size: x-large;
+    height: 50px;
+    width: 150px;
+    position: absolute;
+    z-index: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #ECBEB4;
+    left: 52%;
+    top: 25%;
+}
+
+.smallText{
+    font-size: small;
+}
+
+img.category{
+    height: 80px;
+    width: auto;
+}

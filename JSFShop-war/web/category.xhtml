@@ -4,63 +4,50 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <body>
-
-        <ui:composition template="./../template.xhtml">
-
+        <ui:composition template="./template.xhtml">
             <ui:define name="title">
                 Book
             </ui:define>
-
             <ui:define name="content">
-                <!--<div id="categoryLeftColumn">       
-                    <c:forEach var="category" items="${categories}">
-                        <c:choose>
-                            <c:when test="${category.id == pageContext.request.queryString}">
-                                <div id="selectedCategory">
-                                    <span>${category.media}</span>
-                                </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div class="categoryBoxLeft">
-                                    <a href="category?${category.id}" class="categoryButton">
-                                        <div>${category.media}</div>
-                                    </a>
-                                </div>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
+                <div id="categoryLeftColumn">
+                <ui:repeat var="category" value="#{categoryManager.categories}">
+                    <div id="selectedCategory">
+                        <span>#{category.media}</span>
+                    </div>
+                </ui:repeat>
                 </div>
+                
                 <div id="categoryRightColumn">
                     <table id="tableCategory">
-                        <c:forEach var="mediatype" items="${categoryProducts}" varStatus="iter">
+                        <ui:repeat var="mediatype" value="#{categoryManager.mediaTypes}">
 
                             <tr class="${((iter.index % 2) == 0) ? 'lightBlue' : 'white'}">
                                 <td>
-                                    <img class="category" src="${initParam.productImagePath}${mediatype.title}.jpg" alt="${mediatype.title}">
+                                    <img class="category" src="${initParam.productImagePath}#{mediatype.title}.jpg" alt="#{mediatype.title}"/>
                                 </td>
                                 <td>
-                                    ${mediatype.title}
-                                    <br>
-                                    <span class="smallText">${mediatype.genre}</span>
+                                    #{mediatype.title}
+                                    <br/>
+                                    <span class="smallText">#{mediatype.genre}</span>
                                 </td>
                                 <td>
-                                    &euro; ${mediatype.price} / unit
+                                    &euro; #{mediatype.price} / unit
                                 </td>
                                 <td>
-                                    <form action="<c:url value='addToCart'/>" method="post">
-                                        <input type="hidden" name="productId" value="${mediatype.id}">
-                                        <input type="submit" value="add to cart">
+                                    <form method="post">
+                                        <input type="hidden" name="productId" value="#{mediatype.id}"/>
+                                        <input type="submit" value="add to cart"/>
                                     </form>
-                                        <form action="<c:url value='detail'/>" method="get">
-                                        <input type="hidden" name="productId" value="${mediatype.id}">
+                                        <form  method="get">
+                                        <input type="hidden" name="productId" value="#{mediatype.id}"/>
                                         <input type="submit" value="details"/>
                                     </form>
                                 </td>
                             </tr>
-                        </c:forEach>
+                        </ui:repeat>
                     </table>
-                </div>-->
-                content
+                </div>
+                
             </ui:define>
 
         </ui:composition>
