@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class MediaTypeFacade extends AbstractFacade<MediaType> {
 
-    @PersistenceContext(unitName = "JSFShopPU")
+    @PersistenceContext(unitName = "JSFShop-ejbPU")
     private EntityManager em;
 
     @Override

@@ -24,16 +24,15 @@
                 <div id="indexRightColumn">
                     <h:form>
                         <div class="categorybox">
-                            #{categoryManager}
                         </div>
-                        <!--<ui:repeat var="category" value="#{categoryManager.categories}">
+                        <ui:repeat var="category" value="#{categoryManager.categories}">
                             <div class="categoryBox">
-                                <a href="category?#{categoryManager.categories.id}">
-                                    <span class="categoryLabelText">#{categoryManager.categories.media}</span>
-                                    <img src="#{initParam.categoryImagePath}#{categoryManager.categories.cat_type}.jpg" alt="#{categoryManager.categories.media}"/>
+                                <a href="category?#{categoryManager.categories.get(1)}">
+                                    
+                                    <img src="/resources/img/categories/#{categoryManager.categories[cat_type]}.jpg" alt="#{categoryManager.media}"/>
                                 </a>
                             </div>
-                        </ui:repeat>-->
+                        </ui:repeat>          
                     </h:form>    
                 </div>
             </ui:define>

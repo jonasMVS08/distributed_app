@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class GamesFacade extends AbstractFacade<Games> {
 
-    @PersistenceContext(unitName = "JSFShopPU")
+    @PersistenceContext(unitName = "JSFShop-ejbPU")
     private EntityManager em;
 
     @Override
