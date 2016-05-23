@@ -1,0 +1,86 @@
+
+#main{
+    background: #C5C9A4;
+}
+
+#header{
+    height: 250px;
+    background: #476A6F;
+}
+
+#widgetBar{
+    height: 50px;
+    width: 850px;
+    float: right;
+    background: #7EB09B;
+}
+
+.headerWidget{
+    width: 194px;
+    margin: 20px 2px;
+    font-size: small;
+    float: right;
+    line-height: 25px;
+    background: #519E8A;
+}
+
+#logoText{
+    float: left;
+    margin: 20px 0 0 70px;
+    font-family: 'American Typewriter', Courier, monospace;
+    font-size: 50px;
+    color: #333;
+}
+
+#footer{
+    height: 60px;
+    width: 350px;
+    clear: left;
+    background: #7EB09B;
+}
+
+#left {
+    float: left;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+#right {
+    float: right;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+.center_content {
+    position: relative;
+    background-color: #dddddd;
+    padding: 0px;
+}
+
+.left_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+

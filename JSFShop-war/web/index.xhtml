@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="title">
+                HomePage
+            </ui:define>
+
+            <ui:define name="content">
+                <div id="indexLeftColumn">
+                    <div id="welcomeText">
+                        <h3>Welcome to the Multimedia Store</h3>
+                        <p>Check out our promotions on several items and enjoy of the free home-delivery with every order you make!</p>
+                    </div>
+                </div>
+
+                <div id="indexRightColumn">
+                    <h:form>
+                        <div class="categorybox">
+                            #{categoryManager}
+                        </div>
+                        <!--<ui:repeat var="category" value="#{categoryManager.categories}">
+                            <div class="categoryBox">
+                                <a href="category?#{categoryManager.categories.id}">
+                                    <span class="categoryLabelText">#{categoryManager.categories.media}</span>
+                                    <img src="#{initParam.categoryImagePath}#{categoryManager.categories.cat_type}.jpg" alt="#{categoryManager.categories.media}"/>
+                                </a>
+                            </div>
+                        </ui:repeat>-->
+                    </h:form>    
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

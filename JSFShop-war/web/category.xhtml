@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Book
+            </ui:define>
+
+            <ui:define name="content">
+                <!--<div id="categoryLeftColumn">       
+                    <c:forEach var="category" items="${categories}">
+                        <c:choose>
+                            <c:when test="${category.id == pageContext.request.queryString}">
+                                <div id="selectedCategory">
+                                    <span>${category.media}</span>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="categoryBoxLeft">
+                                    <a href="category?${category.id}" class="categoryButton">
+                                        <div>${category.media}</div>
+                                    </a>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </div>
+                <div id="categoryRightColumn">
+                    <table id="tableCategory">
+                        <c:forEach var="mediatype" items="${categoryProducts}" varStatus="iter">
+
+                            <tr class="${((iter.index % 2) == 0) ? 'lightBlue' : 'white'}">
+                                <td>
+                                    <img class="category" src="${initParam.productImagePath}${mediatype.title}.jpg" alt="${mediatype.title}">
+                                </td>
+                                <td>
+                                    ${mediatype.title}
+                                    <br>
+                                    <span class="smallText">${mediatype.genre}</span>
+                                </td>
+                                <td>
+                                    &euro; ${mediatype.price} / unit
+                                </td>
+                                <td>
+                                    <form action="<c:url value='addToCart'/>" method="post">
+                                        <input type="hidden" name="productId" value="${mediatype.id}">
+                                        <input type="submit" value="add to cart">
+                                    </form>
+                                        <form action="<c:url value='detail'/>" method="get">
+                                        <input type="hidden" name="productId" value="${mediatype.id}">
+                                        <input type="submit" value="details"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>-->
+                content
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
