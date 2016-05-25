@@ -46,14 +46,10 @@
                                     &euro; #{mediatype.price} / unit
                                 </td>
                                 <td>
-                                    <form method="post">
-                                        <input type="hidden" name="productId" value="#{mediatype.id}"/>
-                                        <input type="submit" value="add to cart"/>
-                                    </form>
-                                    <form  method="get">
-                                        <input type="hidden" name="productId" value="#{mediatype.id}"/>
-                                        <input type="submit" value="details"/>
-                                    </form>
+                                    <h:commandbutton value="add to cart" onclick="#{categoryManager}"/>
+                                    <h:button value="details" outcome="details.xhtml">
+                                        <f:param name="medTypeId" value="#{mediatype.id}"/>
+                                    </h:button>
                                 </td>
                             </tr>
                         </ui:repeat>
