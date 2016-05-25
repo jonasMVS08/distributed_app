@@ -18,6 +18,7 @@ import session.CategoryFacade;
 import session.CdFacade;
 import session.MediaTypeFacade;
 import session.ShoppingCart;
+import session.ShoppingCartRemote;
 import session.TrackFacade;
 
 /**
@@ -41,7 +42,7 @@ public class CategoryManager implements Serializable{
     @EJB
     TrackFacade trackFacade;
     @EJB
-    ShoppingCart shoppingCart;
+    ShoppingCartRemote shoppingCart;
     
     @ManagedProperty(value="#{param.catId}")
     private char catId;
