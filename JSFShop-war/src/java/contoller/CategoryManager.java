@@ -6,11 +6,8 @@
 package contoller;
 
 import entity.Category;
-import entity.Cd;
 import entity.MediaType;
-import entity.Track;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -20,7 +17,7 @@ import javax.faces.bean.RequestScoped;
 import session.CategoryFacade;
 import session.CdFacade;
 import session.MediaTypeFacade;
-import session.ShoppingCart;
+import session.ShoppingCartRemoteRemote;
 import session.TrackFacade;
 
 /**
@@ -44,7 +41,7 @@ public class CategoryManager implements Serializable{
     @EJB
     TrackFacade trackFacade;
     @EJB
-    ShoppingCart shoppingCart;
+    ShoppingCartRemoteRemote shoppingCart;
     
     @ManagedProperty(value="#{param.catId}")
     private char catId;
@@ -74,5 +71,6 @@ public class CategoryManager implements Serializable{
     
     public void addToCart(int productId) {
         shoppingCart.init(productId);
+        shoppingCart.addToCart(productId);
     }
 }
