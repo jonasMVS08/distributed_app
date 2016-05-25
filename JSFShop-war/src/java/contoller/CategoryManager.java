@@ -17,6 +17,7 @@ import javax.faces.bean.RequestScoped;
 import session.CategoryFacade;
 import session.CdFacade;
 import session.MediaTypeFacade;
+import session.ShoppingCartRemoteRemote;
 import session.TrackFacade;
 
 /**
@@ -39,6 +40,8 @@ public class CategoryManager implements Serializable{
     CdFacade cdFacade;
     @EJB
     TrackFacade trackFacade;
+    @EJB
+    ShoppingCartRemoteRemote shoppingCartRemote;
     
     @ManagedProperty(value="#{param.catId}")
     private char catId;
@@ -64,5 +67,9 @@ public class CategoryManager implements Serializable{
     public List<MediaType> getMediaTypes() {        
         mediaTypes = mediaTypeFacade.getCollection(catId);
         return mediaTypes;
+    }
+    
+    public void addToCart(int productId){
+        shoppingCartRemote.init(productId);
     }
 }
