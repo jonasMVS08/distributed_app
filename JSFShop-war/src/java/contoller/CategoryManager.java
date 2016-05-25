@@ -17,6 +17,7 @@ import javax.faces.bean.RequestScoped;
 import session.CategoryFacade;
 import session.CdFacade;
 import session.MediaTypeFacade;
+import session.ShoppingCart;
 import session.TrackFacade;
 
 /**
@@ -39,6 +40,8 @@ public class CategoryManager implements Serializable{
     CdFacade cdFacade;
     @EJB
     TrackFacade trackFacade;
+    @EJB
+    ShoppingCart shoppingCart;
     
     @ManagedProperty(value="#{param.catId}")
     private char catId;
