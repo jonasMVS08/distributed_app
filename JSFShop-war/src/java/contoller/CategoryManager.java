@@ -66,5 +66,4 @@ public class CategoryManager implements Serializable{
         mediaTypes = mediaTypeFacade.getCollection(catId);
         return mediaTypes;
     }
-    
 }

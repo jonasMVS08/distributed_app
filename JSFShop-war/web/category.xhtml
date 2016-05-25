@@ -50,10 +50,9 @@
                                         <input type="hidden" name="productId" value="#{mediatype.id}"/>
                                         <input type="submit" value="add to cart"/>
                                     </form>
-                                    <form  method="get">
-                                        <input type="hidden" name="productId" value="#{mediatype.id}"/>
-                                        <input type="submit" value="details"/>
-                                    </form>
+                                    <h:button value="details" outcome="details.xhtml">
+                                        <f:param name="medTypeId" value="#{mediatype.id}" />
+                                    </h:button>
                                 </td>
                             </tr>
                         </ui:repeat>
