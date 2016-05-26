@@ -13,12 +13,12 @@
             <ui:define name="content">
                 <div id="categoryLeftColumn">
                     <ui:repeat var="category" value="#{categoryManager.categories}">
-                        <h:panelGroup layout="block" rendered="#{category.cat_type == categoryManager.catId}" id="selectedCategory">
-                            <div id="selectedCategory">
+                        <h:panelGroup layout="block" rendered="#{category.cat_type == categoryManager.catId}" class="selectedCategory">
+                            <div >
                                 <span>#{category.media}</span>
                             </div>
                         </h:panelGroup>
-                        <h:panelGroup layout="block" rendered="#{category.cat_type != categoryManager.catId}" id="selectedCategory">
+                        <h:panelGroup layout="block" rendered="#{category.cat_type != categoryManager.catId}" >
                             <div class="categoryBoxLeft">
                                 <h:link outcome="category.xhtml">
                                     <f:param name="catId" value="#{category.cat_type}"/>
@@ -46,10 +46,15 @@
                                     &euro; #{mediatype.price} / unit
                                 </td>
                                 <td>
-                                    <h:commandButton value="add to cart" onclick=""/>
+                                    <h:form>
+                                   <!-- <h:commandButton value="add to cart" actionListener=""/>
+                                   <h:commandButton value="add to cart" onclick="" />
+                                   <h:commandButton value="add to cart" action="" />
+                                   <h:commandButton value="add to cart" onclick="" />-->
                                     <h:button value="details" outcome="details.xhtml">
                                         <f:param name="medTypeId" value="#{mediatype.id}"/>
                                     </h:button>
+                                    </h:form>
                                 </td>
                             </tr>
                         </ui:repeat>

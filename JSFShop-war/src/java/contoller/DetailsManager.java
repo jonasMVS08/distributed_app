@@ -16,6 +16,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import session.CdFacade;
 import session.MediaTypeFacade;
 
@@ -23,7 +24,7 @@ import session.MediaTypeFacade;
  *
  * @author Jonas
  */
-
+//@Named(value = "detailsManager")
 @ManagedBean
 @RequestScoped
 public class DetailsManager implements Serializable{

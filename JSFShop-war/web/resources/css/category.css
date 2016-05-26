@@ -40,7 +40,7 @@ and open the template in the editor.
     line-height: normal;
 }
 
-#selectedCategory{
+.selectedCategory{
     font-size: 20px;
     height: 70px;
     width: 180px;

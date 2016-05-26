@@ -21,4 +21,14 @@
         <welcome-file>index.xhtml</welcome-file>
         <welcome-file>/index.xhtml</welcome-file>
     </welcome-file-list>
+    <ejb-ref>
+        <ejb-ref-name>ShoppingCart</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <remote>session.ShoppingCartRemote</remote>
+    </ejb-ref>
+    <ejb-ref>
+        <ejb-ref-name>ShoppingCart1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <remote>session.ShoppingCartRemote</remote>
+    </ejb-ref>
 </web-app>

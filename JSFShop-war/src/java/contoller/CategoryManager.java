@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
 import session.CategoryFacade;
 import session.CdFacade;
 import session.MediaTypeFacade;
@@ -25,7 +26,7 @@ import session.TrackFacade;
  *
  * @author karelwinderickx
  */
-
+@Named(value = "categoryManager")
 @ManagedBean
 @RequestScoped
 public class CategoryManager implements Serializable{
@@ -41,8 +42,6 @@ public class CategoryManager implements Serializable{
     CdFacade cdFacade;
     @EJB
     TrackFacade trackFacade;
-    @EJB
-    ShoppingCartRemote shoppingCart;
     
     @ManagedProperty(value="#{param.catId}")
     private char catId;
@@ -68,9 +67,5 @@ public class CategoryManager implements Serializable{
     public List<MediaType> getMediaTypes() {        
         mediaTypes = mediaTypeFacade.getCollection(catId);
         return mediaTypes;
-    }
-    
-    public void addToCart(int productId){
-        shoppingCart.init(productId);
     }
 }

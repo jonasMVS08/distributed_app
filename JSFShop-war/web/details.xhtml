@@ -52,9 +52,9 @@
                             <p><strong>Genre:</strong> ${detailsManager.media.genre}</p>
                             <p><strong>Price:</strong> &euro;${detailsManager.media.price}</p>
                             <p><strong>Published:</strong> ${detailsManager.media.published}</p>
-                            <c:forEach var="song" items="#{detailsManager.listSongs}">
+                            <p class="songs"><c:forEach var="song" items="#{detailsManager.listSongs}">
                                 #{song}<br/>
-                            </c:forEach>
+                                </c:forEach></p>
                         </c:when>
                         <c:when test="${'D' == detailsManager.media.mtype}">
                             <p><strong>Title: </strong> ${detailsManager.media.title}</p>                            

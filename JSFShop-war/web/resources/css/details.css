@@ -47,3 +47,9 @@ img.detail{
     float: left;
     height: 100%;
 }
+
+.songs{
+    text-align: left;
+    margin-left: 50%;
+    font-size: 14px;
+}
