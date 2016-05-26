@@ -46,9 +46,12 @@
                                     &euro; #{mediatype.price} / unit
                                 </td>
                                 <td>
-                                    <h:commandButton value="add to cart" onclick=""/>
+                                    <h:commandButton value="add to cart" onclick="">
+                                        <f:phaseListener type="contoller.InterceptorManager"/>
+                                    </h:commandButton>
                                     <h:button value="details" outcome="details.xhtml">
                                         <f:param name="medTypeId" value="#{mediatype.id}"/>
+                                        
                                     </h:button>
                                 </td>
                             </tr>
