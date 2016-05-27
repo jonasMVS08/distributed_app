@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,6 +37,8 @@ public abstract class MediaType implements Serializable{
     private float price;
     private String genre;
     private int published;
+    @ManyToMany(mappedBy="products")
+    private List<Order> orders;
 
     public MediaType() {
     }
@@ -94,6 +98,14 @@ public abstract class MediaType implements Serializable{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override

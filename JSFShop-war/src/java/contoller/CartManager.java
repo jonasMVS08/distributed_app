@@ -31,13 +31,11 @@ public class CartManager implements Serializable{
     public CartManager() {
     }
     
-    /*public void addToCart(int productId){
-        if(shoppingCart.getUid() == null){
+    public void addToCart(int productId){
+        if(shoppingCart.getUid() == null && productId == 0){
             shoppingCart.init(productId);
-        }else{
-            shoppingCart.addToCart(productId);
         }
-    }*/
+    }
 
     public int getCartSize() {
         cartSize = shoppingCart.numberOfItems();

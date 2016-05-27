@@ -33,6 +33,7 @@ public class CategoryManager implements Serializable{
 
     private List<Category> categories;
     private List<MediaType> mediaTypes;
+    private MediaType promotedItem;
     private int customerId;
     @EJB
     CategoryFacade categoryFacade;
@@ -62,6 +63,15 @@ public class CategoryManager implements Serializable{
 
     public void setCatId(char catId) {
         this.catId = catId;
+    }
+
+    public MediaType getPromotedItem() {
+        return promotedItem;
+    }
+
+    public void setPromotedItem(int item) {
+        
+        this.promotedItem = mediaTypeFacade.find(item);
     }
         
     public List<MediaType> getMediaTypes() {        

@@ -37,9 +37,8 @@ public class MessageBean implements MessageListener {
 
     try {
         if (inMessage instanceof TextMessage) {
-            msg = (TextMessage) inMessage;
-            logger.info("MESSAGE BEAN: Message received: " +
-                msg.getText());
+            msg = (TextMessage) inMessage;         
+            logger.info("MESSAGE BEAN: Message received: " + msg.getText());
         } else {
             logger.warning("Message of wrong type: " +
                 inMessage.getClass().getName());

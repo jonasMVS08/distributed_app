@@ -5,12 +5,14 @@
  */
 package session;
 
+import static com.sun.faces.config.WebConfiguration.DisableUnicodeEscaping.False;
 import java.util.Date;
-import java.util.Queue;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.ejb.Timeout;
@@ -32,6 +34,9 @@ import javax.jms.Message;
 @Singleton
 @Startup
 public class TimerAction {
+
+    @EJB
+    MediaTypeFacade mediaTypeFacade;
 
     @Resource
     private TimerService timerService;
@@ -59,8 +64,10 @@ public class TimerAction {
             connection = connectionFactory.createConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer producer = session.createProducer(queue);
-            
-            Message message = session.createTextMessage("hallo, hier ben ik");
+            int size = mediaTypeFacade.findAll().size();
+            Random rand = new Random();
+            int item = rand.nextInt(size)+1;
+            Message message = session.createTextMessage(""+item);
             producer.send(message);
             
         } catch (JMSException ex) {
@@ -68,6 +75,4 @@ public class TimerAction {
         }
         
     }
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }
