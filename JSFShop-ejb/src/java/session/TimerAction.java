@@ -44,12 +44,21 @@ public class TimerAction {
     private ConnectionFactory connectionFactory;
     @Resource(mappedName="jms/ShopQueue")
     private Destination queue;
+    private boolean check = false;
     
     @PostConstruct
     private void init() {
+        if(!check){
+            TimerConfig timerConfig = new TimerConfig();
+            timerService.createSingleActionTimer(10000, timerConfig); //10 seconds
+            System.out.println("Timer INIT Initialized");
+        }
+    }
+    
+    private void restart(){
         TimerConfig timerConfig = new TimerConfig();
-        timerService.createSingleActionTimer(10000, timerConfig); //10 seconds
-        System.out.println("Timer Initialized");
+        timerService.createSingleActionTimer(15000, timerConfig); //5 seconds
+        System.out.println("Timer RESET Initialized");
     }
     
     @Timeout
@@ -59,7 +68,7 @@ public class TimerAction {
         System.out.println("______________________________________________");  
         
         Connection connection = null;
-        
+        check = true;
         try {
             connection = connectionFactory.createConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
@@ -69,10 +78,11 @@ public class TimerAction {
             int item = rand.nextInt(size)+1;
             Message message = session.createTextMessage(""+item);
             producer.send(message);
-            
+            session.close();
+            connection.close();
         } catch (JMSException ex) {
             Logger.getLogger(TimerAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        restart();
     }
 }

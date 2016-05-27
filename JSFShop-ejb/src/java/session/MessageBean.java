@@ -8,6 +8,7 @@ package session;
 import static com.sun.xml.ws.security.impl.policy.Constants.logger;
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.ejb.MessageDrivenContext;
 import javax.jms.JMSException;
@@ -24,6 +25,7 @@ import javax.jms.TextMessage;
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
 public class MessageBean implements MessageListener {
+  
     @Resource
     private MessageDrivenContext mdc;
     
@@ -37,8 +39,8 @@ public class MessageBean implements MessageListener {
 
     try {
         if (inMessage instanceof TextMessage) {
-            msg = (TextMessage) inMessage;         
-            logger.info("MESSAGE BEAN: Message received: " + msg.getText());
+            msg = (TextMessage) inMessage; 
+            logger.info("MESSAGE BEAN: Message received: " + msg.getText().toString());
         } else {
             logger.warning("Message of wrong type: " +
                 inMessage.getClass().getName());
@@ -50,6 +52,5 @@ public class MessageBean implements MessageListener {
         te.printStackTrace();
     }
         
-    }
-    
+    }    
 }

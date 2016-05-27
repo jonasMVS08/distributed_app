@@ -86,3 +86,14 @@ img.category{
     height: 80px;
     width: auto;
 }
+
+.newbutton{
+    background: #519E8A;
+    font-size: 13px;
+    width: 70px;
+    height: 25px;
+    float: left;
+    border-style: solid;
+    border-width: 1px;
+    line-height: 25px;
+}

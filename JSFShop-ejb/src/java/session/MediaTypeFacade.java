@@ -34,5 +34,4 @@ public class MediaTypeFacade extends AbstractFacade<MediaType> {
         List<MediaType> results = em.createQuery("SELECT m FROM mediatype m WHERE m.mtype='"+type+"'").getResultList();
         return results;
     }
-    
 }

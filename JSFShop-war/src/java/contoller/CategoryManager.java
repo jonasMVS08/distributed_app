@@ -33,8 +33,6 @@ public class CategoryManager implements Serializable{
 
     private List<Category> categories;
     private List<MediaType> mediaTypes;
-    private MediaType promotedItem;
-    private int customerId;
     @EJB
     CategoryFacade categoryFacade;
     @EJB
@@ -46,11 +44,12 @@ public class CategoryManager implements Serializable{
     
     @ManagedProperty(value="#{param.catId}")
     private char catId;
+    @ManagedProperty(value="#{param.addId}")
+    private int addId = 0;
     
     @PostConstruct
     public void init() {
         categories = categoryFacade.findAll(); 
-        customerId = 1;
     }
     
     public List<Category> getCategories() {
@@ -64,18 +63,17 @@ public class CategoryManager implements Serializable{
     public void setCatId(char catId) {
         this.catId = catId;
     }
-
-    public MediaType getPromotedItem() {
-        return promotedItem;
-    }
-
-    public void setPromotedItem(int item) {
-        
-        this.promotedItem = mediaTypeFacade.find(item);
-    }
         
     public List<MediaType> getMediaTypes() {        
         mediaTypes = mediaTypeFacade.getCollection(catId);
         return mediaTypes;
+    }
+
+    public int getAddId() {
+        return addId;
+    }
+
+    public void setAddId(int addId) {
+        this.addId = addId;
     }
 }

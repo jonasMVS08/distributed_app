@@ -8,10 +8,8 @@ package contoller;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.xml.ws.Action;
 import session.ShoppingCartRemote;
 
 /**
@@ -20,7 +18,7 @@ import session.ShoppingCartRemote;
  */
 @Named(value = "cartManager")
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 public class CartManager implements Serializable{
 
     @EJB
@@ -32,10 +30,16 @@ public class CartManager implements Serializable{
     }
     
     public void addToCart(int productId){
-        if(shoppingCart.getUid() == null && productId == 0){
-            shoppingCart.init(productId);
+        int j = shoppingCart.getUid();
+        if(shoppingCart.getUid() == 0 && productId != 0){
+            shoppingCart.init();
+            int u = shoppingCart.getUid();
+            shoppingCart.addToCart(productId);
+            int aantal = shoppingCart.numberOfItems();
             System.out.println("Product added: " + productId);
-        } else {
+        } else if(shoppingCart.getUid() != null && productId != 0) {
+            shoppingCart.addToCart(productId);
+            int aantal = shoppingCart.numberOfItems();
             System.out.println("Product added: " + productId);
         }
     }
