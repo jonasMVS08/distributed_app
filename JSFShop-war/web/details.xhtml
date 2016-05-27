@@ -31,49 +31,53 @@
                         </h:panelGroup>
                     </ui:repeat>
                 </div>
-            <div id="detailRightColumn">
-                <div id="imageColumn">
-                    <img class="detail" src="${initParam.productImagePath}#{detailsManager.media.title}.jpg" alt="#{detailsManager.media.title}"/>
+                <div id="detailRightColumn">
+                    <div id="imageColumn">
+                        <img class="detail" src="${initParam.productImagePath}#{detailsManager.media.title}.jpg" alt="#{detailsManager.media.title}"/>
+                        <hr/>
+                        <h:commandButton value="add to cart" onclick="#{cartManager.addToCart(detailsManager.media.id)}">
+                            <f:phaseListener type="contoller.InterceptorManager"/>
+                        </h:commandButton>
+                    </div>
+                    <div id="detailColumn">
+                        <c:choose>
+                            <c:when test="${'B' == detailsManager.media.mtype}">
+                                <p><strong>Title: </strong> #{detailsManager.media.title}</p>                            
+                                <p><strong>Author: </strong>#{detailsManager.media.author}</p>
+                                <p><strong>ISBN: </strong>#{detailsManager.media.isbn}</p>
+                                <p><strong>Genre: </strong>#{detailsManager.media.genre}</p>
+                                <p><strong>Price: </strong> &euro;#{detailsManager.media.price}</p>
+                                <p><strong>Published </strong>#{detailsManager.media.published}</p>
+                                <p><strong>Pages: </strong>#{detailsManager.media.pages}</p>
+                            </c:when>
+                            <c:when test="${'C' == detailsManager.media.mtype}">
+                                <p><strong>Album:</strong> ${detailsManager.media.title}</p>
+                                <p><strong>Artist:</strong> ${detailsManager.media.artist}</p>
+                                <p><strong>Genre:</strong> ${detailsManager.media.genre}</p>
+                                <p><strong>Price:</strong> &euro;${detailsManager.media.price}</p>
+                                <p><strong>Published:</strong> ${detailsManager.media.published}</p>
+                                <p class="songs"><c:forEach var="song" items="#{detailsManager.listSongs}">
+                                        #{song}<br/>
+                                    </c:forEach></p>
+                            </c:when>
+                            <c:when test="${'D' == detailsManager.media.mtype}">
+                                <p><strong>Title: </strong> ${detailsManager.media.title}</p>                            
+                                <p><strong>Director: </strong> ${detailsManager.media.director}</p>
+                                <p><strong>Genre: </strong> ${detailsManager.media.genre}</p>
+                                <p><strong>Price: </strong> &euro;${detailsManager.media.price}</p>
+                                <p><strong>Published:</strong> ${detailsManager.media.published}</p>
+                            </c:when>
+                            <c:otherwise>
+                                <p><strong>Title: </strong> ${detailsManager.media.title}</p>                            
+                                <p><strong>Publisher: </strong> ${detailsManager.media.publisher}</p>
+                                <p><strong>Console Type:</strong> ${detailsManager.media.consoleType}</p>
+                                <p><strong>Genre: </strong> ${detailsManager.media.genre}</p>
+                                <p><strong>Price: </strong> &euro;${detailsManager.media.price}</p>
+                                <p><strong>Published:</strong> ${detailsManager.media.published}</p>
+                            </c:otherwise>
+                        </c:choose>                    
+                    </div>
                 </div>
-                <div id="detailColumn">
-                    <c:choose>
-                        <c:when test="${'B' == detailsManager.media.mtype}">
-                            <p><strong>Title: </strong> #{detailsManager.media.title}</p>                            
-                            <p><strong>Author: </strong>#{detailsManager.media.author}</p>
-                            <p><strong>ISBN: </strong>#{detailsManager.media.isbn}</p>
-                            <p><strong>Genre: </strong>#{detailsManager.media.genre}</p>
-                            <p><strong>Price: </strong> &euro;#{detailsManager.media.price}</p>
-                            <p><strong>Published </strong>#{detailsManager.media.published}</p>
-                            <p><strong>Pages: </strong>#{detailsManager.media.pages}</p>
-                        </c:when>
-                        <c:when test="${'C' == detailsManager.media.mtype}">
-                            <p><strong>Album:</strong> ${detailsManager.media.title}</p>
-                            <p><strong>Artist:</strong> ${detailsManager.media.artist}</p>
-                            <p><strong>Genre:</strong> ${detailsManager.media.genre}</p>
-                            <p><strong>Price:</strong> &euro;${detailsManager.media.price}</p>
-                            <p><strong>Published:</strong> ${detailsManager.media.published}</p>
-                            <p class="songs"><c:forEach var="song" items="#{detailsManager.listSongs}">
-                                #{song}<br/>
-                                </c:forEach></p>
-                        </c:when>
-                        <c:when test="${'D' == detailsManager.media.mtype}">
-                            <p><strong>Title: </strong> ${detailsManager.media.title}</p>                            
-                            <p><strong>Director: </strong> ${detailsManager.media.director}</p>
-                            <p><strong>Genre: </strong> ${detailsManager.media.genre}</p>
-                            <p><strong>Price: </strong> &euro;${detailsManager.media.price}</p>
-                            <p><strong>Published:</strong> ${detailsManager.media.published}</p>
-                        </c:when>
-                        <c:otherwise>
-                            <p><strong>Title: </strong> ${detailsManager.media.title}</p>                            
-                            <p><strong>Publisher: </strong> ${detailsManager.media.publisher}</p>
-                            <p><strong>Console Type:</strong> ${detailsManager.media.consoleType}</p>
-                            <p><strong>Genre: </strong> ${detailsManager.media.genre}</p>
-                            <p><strong>Price: </strong> &euro;${detailsManager.media.price}</p>
-                            <p><strong>Published:</strong> ${detailsManager.media.published}</p>
-                        </c:otherwise>
-                    </c:choose>                    
-                </div>
-            </div>
             </ui:define>
 
         </ui:composition>

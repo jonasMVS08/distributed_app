@@ -34,6 +34,9 @@ public class CartManager implements Serializable{
     public void addToCart(int productId){
         if(shoppingCart.getUid() == null && productId == 0){
             shoppingCart.init(productId);
+            System.out.println("Product added: " + productId);
+        } else {
+            System.out.println("Product added: " + productId);
         }
     }
 
