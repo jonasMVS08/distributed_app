@@ -8,8 +8,8 @@ package contoller;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import session.ShoppingCartRemote;
 
 /**
@@ -18,7 +18,7 @@ import session.ShoppingCartRemote;
  */
 @Named(value = "cartManager")
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class CartManager implements Serializable{
 
     @EJB

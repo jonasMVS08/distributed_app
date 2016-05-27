@@ -25,7 +25,7 @@ import session.ShoppingCartRemote;
  *
  * @author Jonas
  */
-@WebServlet(name = "ControllerServlet",loadOnStartup = 1, urlPatterns = {"/ControllerServlet","/addToCart","/category"})
+@WebServlet(name = "ControllerServlet",loadOnStartup = 1, urlPatterns = {"/ControllerServlet","/cart"})
 public class ControllerServlet extends HttpServlet {
 
     @EJB
@@ -39,7 +39,19 @@ public class ControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String userPath = request.getServletPath();
+        HttpSession session = request.getSession();
         
+        if(userPath.equals("/cart")){
+            userPath = "/cart";
+        }
+        String url = userPath + ".xhtml";
+
+        try {
+            request.getRequestDispatcher(url).forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
