@@ -12,7 +12,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import session.MediaTypeFacade;
 import session.ShoppingCartRemote;
 
@@ -33,6 +32,7 @@ public class CartManager implements Serializable{
     private int cartSize;
     private int quantity;
     private ArrayList<Integer> products;
+    private String totalPrice;
        
     public void addToCart(int productId){
         int j = shoppingCart.getUid();
@@ -79,4 +79,13 @@ public class CartManager implements Serializable{
     public void clearCart(){
         shoppingCart.clearCart();
     }
+
+    public String getTotalPrice() {
+        return String.format("%.2f",shoppingCart.getTotalPrice());
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = Float.toString(totalPrice);
+    }
+    
 }
