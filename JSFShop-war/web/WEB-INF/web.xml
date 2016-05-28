@@ -12,6 +12,23 @@
         <param-name>productImagePath</param-name>
         <param-value>resources/img/products/</param-value>
     </context-param>
+    <filter>
+        <filter-name>ShopFilter</filter-name>
+        <filter-class>filter.ShopFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ShopFilter</filter-name>
+        <url-pattern>/cart</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-class>contoller.ControllerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/cart</url-pattern>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

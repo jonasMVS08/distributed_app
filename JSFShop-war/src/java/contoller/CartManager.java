@@ -5,11 +5,15 @@
  */
 package contoller;
 
+import entity.MediaType;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.ejb.EJB;
+import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ManagedProperty;
+import session.MediaTypeFacade;
 import session.ShoppingCartRemote;
 
 /**
@@ -18,29 +22,28 @@ import session.ShoppingCartRemote;
  */
 @Named(value = "cartManager")
 @ManagedBean
-@SessionScoped
+@ApplicationScoped
 public class CartManager implements Serializable{
 
     @EJB
     ShoppingCartRemote shoppingCart;
+    @EJB
+    MediaTypeFacade mediaTypeFacade;
     private int product;
     private int cartSize;
+    private int quantity;
+    private ArrayList<Integer> products;
        
-    public CartManager() {
-    }
-    
     public void addToCart(int productId){
         int j = shoppingCart.getUid();
         if(shoppingCart.getUid() == 0 && productId != 0){
             shoppingCart.init();
             int u = shoppingCart.getUid();
             shoppingCart.addToCart(productId);
-            int aantal = shoppingCart.numberOfItems();
-            System.out.println("Product added: " + productId);
+            shoppingCart.setTotalPrice(mediaTypeFacade.find(productId).getPrice());
         } else if(shoppingCart.getUid() != null && productId != 0) {
             shoppingCart.addToCart(productId);
-            int aantal = shoppingCart.numberOfItems();
-            System.out.println("Product added: " + productId);
+            shoppingCart.setTotalPrice(mediaTypeFacade.find(productId).getPrice());
         }
     }
 
@@ -57,9 +60,23 @@ public class CartManager implements Serializable{
         return product;
     }
 
-    /*public void setProduct(int product) {
-        if(shoppingCart.getUid() == null && medTypeId != 0){
-            shoppingCart.init(medTypeId);
-        }
-    }   */
+    public ArrayList<MediaType> getProducts() {
+        return shoppingCart.getProducts();
+    }
+
+    public void setProducts(ArrayList<Integer> products) {
+        this.products = products;
+    }
+
+    public int getQuantity(int productId) {
+        return shoppingCart.getQuantity(productId);
+    }
+
+    public void setQuantity(int productId, int quantity) {
+        shoppingCart.setQuantity(productId, quantity);
+    }
+
+    public void clearCart(){
+        shoppingCart.clearCart();
+    }
 }

@@ -45,6 +45,7 @@ public class TimerAction {
     @Resource(mappedName="jms/ShopQueue")
     private Destination queue;
     private boolean check = false;
+    private int times = 5;
     
     @PostConstruct
     private void init() {
@@ -53,12 +54,6 @@ public class TimerAction {
             timerService.createSingleActionTimer(10000, timerConfig); //10 seconds
             System.out.println("Timer INIT Initialized");
         }
-    }
-    
-    private void restart(){
-        TimerConfig timerConfig = new TimerConfig();
-        timerService.createSingleActionTimer(15000, timerConfig); //5 seconds
-        System.out.println("Timer RESET Initialized");
     }
     
     @Timeout
@@ -83,6 +78,5 @@ public class TimerAction {
         } catch (JMSException ex) {
             Logger.getLogger(TimerAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        restart();
     }
 }

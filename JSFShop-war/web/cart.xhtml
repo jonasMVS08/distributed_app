@@ -3,17 +3,96 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
-        <div id="cartTopRow">
-            <div class="cartBox">
-                <c:choose>
-                    <c:when test="#{cartManager.cartSize > 1}">
-                        
-                    </c:when>
-                </c:choose>
-            </div>
-        </div>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="title">
+                The Multimedia Store
+            </ui:define>
+
+            <ui:define name="content">
+                <div id="cartTopRow">
+                    <div class="cartBox">
+                        <c:choose>
+                            <c:when test="#{cartManager.cartSize > 1}">
+                                <p>Your shopping cart contains #{cartManager.cartSize} items.</p>
+                            </c:when>
+                            <c:when test="#{cartManager.cartSize == 1}">
+                                <p>Your shopping cart contains #{cartManager.cartSize} item.</p>
+                            </c:when>
+                            <c:otherwise>
+                                <p>Your shopping cart is empty.</p>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    
+                    <div class="cartMidBox">
+                        <h:form style="float: left;margin-left: 30%;">
+                            <h:button outcome="category.xhtml" value="continue shopping">
+                                <f:param name="catId" value="B" />
+                            </h:button>
+                        </h:form>
+                        <c:if test="#{cartManager.cartSize != 0}">
+                            <h:form style="float: left;margin-left: 3%;">
+                                <h:commandButton value="clear cart" type="submit" action="#{cartManager.clearCart()}" >
+                                    <f:param name="catId" value="B"/>
+                                </h:commandButton>
+                            </h:form>
+                        </c:if>
+                        <c:if test="#{cartManager.cartSize != 0 }">
+                            <h:form style="float: left;margin-left: 3%;">
+                                <h:commandButton value="checkout" type="submit" />
+                            </h:form>
+                        </c:if>
+                    </div>
+                    
+                    <div class="cartBox" style="padding-bottom: 3%;">
+                        <c:if test="#{cartManager.cartSize != 0}">
+                            <table id="cartTable">
+                                <tr class="tableContent">
+                                    <th>product</th>
+                                    <th>name</th>
+                                    <th>price</th>
+                                    <th>quantity</th>
+                                </tr>
+                                <c:forEach var="cartItems" items="#{cartManager.products}" varStatus="iter">
+                                    <tr style="background: #{((iter.index % 2) == 0) ? '#7EB09B' : '#519E8A'};">
+                                        <td>
+                                            <img src="#{initParam.productImagePath}#{cartItems.title}.jpg" alt="#{cartItems.title}" class="category"/>
+                                        </td>
+                                        <td>
+                                            #{cartItems.title}
+                                        </td>
+                                        <td>
+                                            &euro; #{cartItems.price} / unit
+                                        </td>
+                                        <td>
+                                            <form action="update" method="post">
+                                                <input type="hidden"
+                                                    name="productId"
+                                                    value="#{cartItems.id}"/>
+                                                <input type="text"
+                                                    maxlength="2"
+                                                    size="2"
+                                                    value="#{cartManager.getQuantity(cartItems.id)}"
+                                                    name="quantity"
+                                                    style="margin:5px"/>
+                                                <input type="submit"
+                                                    name="submit"
+                                                    value="update"/>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:if>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
     </body>
 </html>

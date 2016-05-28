@@ -11,7 +11,7 @@ and open the template in the editor.
 #cartTopRow {
     height: 170px;
     width: 850px;
-    background: #eee;
+    background: #f5eabe;
 }
 
 #cartBottomRow {
@@ -24,6 +24,7 @@ and open the template in the editor.
     height: auto;
     width: 850px;
     float: left;
+    background: #f5eabe;
 }
 
 .cartBoxText {
@@ -35,7 +36,7 @@ and open the template in the editor.
 }
 
 .cartMidBox {
-    height: 70px;
+    height: 40px;
     width: 850px;
     float: left;
 }
@@ -50,7 +51,6 @@ and open the template in the editor.
     vertical-align: middle;
     color: inherit;
     font-weight: bold;
-    background: #f5eabe;
 }
 
 .subTotalText {
@@ -74,6 +74,6 @@ and open the template in the editor.
 }
 
 .tableContent {
-    line-height: 90px;
-    background: #edf8f7;
+    line-height: 40px;
+    background: #ECBEB4;
 }
