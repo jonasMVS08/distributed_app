@@ -38,9 +38,12 @@ public class InterceptorManager implements PhaseListener {
               FacesContext context = event.getFacesContext();
               CartManager cartManager = context.getApplication().evaluateExpressionGet(context, "#{cartManager}", CartManager.class);
             
+              // When more than 6 items
+              // Give discount
               if(cartManager.getCartSize() > 6) {
-                // geef korting
-                // cartManager.enableDiscount();
+                cartManager.setDiscount(true);
+              } else {
+                cartManager.setDiscount(false);
               }
               System.out.println("after - " + event.getPhaseId().toString());
         }

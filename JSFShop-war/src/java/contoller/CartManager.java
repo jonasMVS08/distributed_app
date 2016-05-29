@@ -33,6 +33,7 @@ public class CartManager implements Serializable{
     private int quantity;
     private ArrayList<Integer> products;
     private String totalPrice;
+    private boolean discount = false;
        
     public void addToCart(int productId){
         int j = shoppingCart.getUid();
@@ -74,6 +75,16 @@ public class CartManager implements Serializable{
 
     public void setQuantity(int productId, int quantity) {
         shoppingCart.setQuantity(productId, quantity);
+    }
+    
+    public boolean getDiscount() {
+        discount = shoppingCart.getDiscount();
+        return discount;
+    }
+    
+    public void setDiscount(boolean disc) {
+        discount = disc;
+        shoppingCart.setDiscount(disc);
     }
 
     public void clearCart(){
