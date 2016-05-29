@@ -15,7 +15,7 @@
         <link href="resources/css/category.css" rel="stylesheet" type="text/css" />
         <link href="resources/css/details.css" rel="stylesheet" type="text/css" />
         <link href="resources/css/cart.css" rel="stylesheet" type="text/css" />
-
+        <link href="resources/css/checkout.css" rel="stylesheet" type="text/css" />
         <title><ui:insert name="title">Facelets Template</ui:insert></title>
     </h:head>
 
@@ -25,7 +25,7 @@
                 <div id="widgetBar">
                     <div class="headerWidget">
                         <c:if test="#{cartManager.cartSize > 0}">
-                            <a href="checkout">
+                            <a href="checkout.xhtml">
                             proceed to checkout &#x279f;
                             </a>
                         </c:if>

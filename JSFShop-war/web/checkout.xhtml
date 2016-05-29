@@ -1,16 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
     <body>
-        <div>TODO write content</div>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="title">
+                Media Shop
+            </ui:define>
+
+            <ui:define name="content">
+                <div id="checkoutTopBox">
+                    <div style="align-content: center; padding-left: 20px;">
+                        <h3 style="text-align: left">Checkout</h3>
+                        <p style="text-align: left;">In order to purchase the items in your shopping cart, please provide us with the following information:</p>
+                    </div>
+                </div>
+
+                <div id="checkoutLeftMidColumn">
+                    <div>
+                        <h:form>
+                            <table id="tableCategory">
+                                <tr>
+                                    <td>
+                                        <p style="text-align: right;">Name :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="name" value="#{checkoutManager.name}" style="min-width: 100%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="text-align: right;">Phone number :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="phone" value="#{checkoutManager.phone}" style="min-width: 100%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="text-align: right;">Email :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="email" value="#{checkoutManager.email}" style="min-width: 100%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="text-align: right;">Address :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="address" value="#{checkoutManager.address}" style="min-width: 100%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="text-align: right;">Postal Code :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="cityRegion" value="#{checkoutManager.cityRegion}" style="min-width: 100%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="text-align: right;">Credit Card number :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="ccNumber" value="#{checkoutManager.ccNumber}" style="min-width: 100%"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div style="align-content: flex-end">
+                                <h:commandButton value="Submit purchase" action="#{checkoutManager.submit()}">
+                                    <f:ajax execute="@form" render="@form" />
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+
+                    </div>
+                </div>
+
+                <div id="checkoutRightMidColumn">
+                    <div id="checkoutRightMidTopBox">
+                        <p>Your product will be delivered in the next 3 days!</p>
+                        <p>Shipping costs are €3.</p>
+                    </div>
+
+                    <div id="checkoutRightMidBottombox">
+
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
     </body>
 </html>

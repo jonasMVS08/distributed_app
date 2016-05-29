@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -25,11 +26,17 @@ public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotNull
     private String name;
+    @NotNull
     private String email;
+    @NotNull
     private String phone;
+    @NotNull
     private String address;
+    @NotNull
     private String cityRegion;
+    @NotNull
     private String ccNumber;
     @OneToMany(mappedBy="customer")
     private Collection<Order> orders;
