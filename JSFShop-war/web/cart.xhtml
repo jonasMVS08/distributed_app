@@ -31,7 +31,7 @@
                     </div>
                     
                     <div class="cartMidBox">
-                        <h:form style="float: left;margin-left: 30%;">
+                        <h:form style="float: left;margin-left: 27%;">
                             <h:button outcome="category.xhtml" value="continue shopping">
                                 <f:param name="catId" value="B" />
                             </h:button>
@@ -46,6 +46,11 @@
                         <c:if test="#{cartManager.cartSize != 0 }">
                             <h:form style="float: left;margin-left: 3%;">
                                 <h:commandButton value="checkout" type="submit" />
+                            </h:form>
+                        </c:if>
+                        <c:if test="#{cartManager.discount == true}">
+                            <h:form style="float: left;margin-left: 3%;">
+                                <h:commandButton value="claim discount" type="submit" />
                             </h:form>
                         </c:if>
                     </div>
