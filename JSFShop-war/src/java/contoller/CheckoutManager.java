@@ -38,6 +38,7 @@ public class CheckoutManager implements Serializable {
     private String cityRegion;
     @NotNull
     private String ccNumber;
+    private Integer uId;
     
     private float shippingCost = 3;
     
@@ -48,7 +49,8 @@ public class CheckoutManager implements Serializable {
     private CustomerFacade customerFacade;
 
     public void submit() {
-        Integer uId = shoppingCart.getUid();
+        uId = shoppingCart.getUid();
+        customer = new Customer();
         customer.setId(uId);
         customer.setName(name);
         customer.setPhone(phone);
