@@ -35,7 +35,14 @@ public class InterceptorManager implements PhaseListener {
     @Override
     public void afterPhase(PhaseEvent event) {
         if (event.getPhaseId() == PhaseId.RENDER_RESPONSE) {
-            System.out.println("after - " + event.getPhaseId().toString());
+              FacesContext context = event.getFacesContext();
+              CartManager cartManager = context.getApplication().evaluateExpressionGet(context, "#{cartManager}", CartManager.class);
+            
+              if(cartManager.getCartSize() > 6) {
+                // geef korting
+                // cartManager.enableDiscount();
+              }
+              System.out.println("after - " + event.getPhaseId().toString());
         }
     } 
 

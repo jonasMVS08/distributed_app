@@ -6,30 +6,22 @@
 package contoller;
 
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.ejb.EJB;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import session.ShoppingCartRemote;
 
 /**
  *
  * @author Jonas
  */
-@WebServlet(name = "ControllerServlet",loadOnStartup = 1, urlPatterns = {"/ControllerServlet","/cart"})
+@WebServlet(name = "ControllerServlet",loadOnStartup = 1, urlPatterns = {"/ControllerServlet","/cart","/update"})
 public class ControllerServlet extends HttpServlet {
 
-    @EJB
-    ShoppingCartRemote shoppingCart;
+    //@EJB
+    //ShoppingCartRemote shoppingCart;
      
     public static String itemId;
     public static String catId;
@@ -66,6 +58,20 @@ public class ControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        String userPath = request.getServletPath();
+        CartManager myManagedBean = (CartManager) getServletContext().getAttribute("cartManager");
+        if (userPath.equals("/update")) {
+            String productId = request.getParameter("productId");
+            String quantity = request.getParameter("quantity");
+            myManagedBean.setQuantity(Integer.parseInt(productId), Integer.parseInt(quantity));
+            userPath = "/cart";
+        }
+        String url = userPath + ".xhtml";
+
+        try {
+            request.getRequestDispatcher(url).forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
