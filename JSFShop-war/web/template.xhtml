@@ -36,10 +36,10 @@
                     </div>                   
                 </div>
                 <div>
-                    <!--<img src="#" id="logoText" alt="The Multimedia Store"/>-->
-                    <h:graphicImage value="#" id="logoText" alt="The Multimedia Store"></h:graphicImage>
+                    <h:link outcome="index.xhtml">
+                        <h:graphicImage value="#{initParam.categoryImagePath}omslag.png" id="logoText" alt="The Multimedia Store" ></h:graphicImage>
+                    </h:link>
                 </div>
-                <!--<ui:insert name="top">Top</ui:insert>-->
             </div>
 
             <div id="content" class="center_content">

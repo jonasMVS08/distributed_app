@@ -26,7 +26,9 @@
 
 #logoText{
     float: left;
-    margin: 20px 0 0 70px;
+    margin-top: 12px;
+    margin-left: 5px;
+    display: block;
     font-family: 'American Typewriter', Courier, monospace;
     font-size: 50px;
     color: #333;
