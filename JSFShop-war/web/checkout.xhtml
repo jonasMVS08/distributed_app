@@ -30,7 +30,7 @@
                                         <p style="text-align: right;">Name :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="name" value="#{checkoutManager.name}" style="min-width: 100%"/>
+                                        <h:inputText id="name" value="#{checkoutManager.name}" style="min-width: 90%"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -38,7 +38,7 @@
                                         <p style="text-align: right;">Phone number :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="phone" value="#{checkoutManager.phone}" style="min-width: 100%"/>
+                                        <h:inputText id="phone" value="#{checkoutManager.phone}" style="min-width: 90%"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -46,7 +46,7 @@
                                         <p style="text-align: right;">Email :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="email" value="#{checkoutManager.email}" style="min-width: 100%"/>
+                                        <h:inputText id="email" value="#{checkoutManager.email}" style="min-width: 90%"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -54,7 +54,7 @@
                                         <p style="text-align: right;">Address :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="address" value="#{checkoutManager.address}" style="min-width: 100%"/>
+                                        <h:inputText id="address" value="#{checkoutManager.address}" style="min-width: 90%"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -62,7 +62,7 @@
                                         <p style="text-align: right;">Postal Code :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="cityRegion" value="#{checkoutManager.cityRegion}" style="min-width: 100%"/>
+                                        <h:inputText id="cityRegion" value="#{checkoutManager.cityRegion}" style="min-width: 90%"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -70,7 +70,7 @@
                                         <p style="text-align: right;">Credit Card number :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="ccNumber" value="#{checkoutManager.ccNumber}" style="min-width: 100%"/>
+                                        <h:inputText id="ccNumber" value="#{checkoutManager.ccNumber}" style="min-width: 90%"/>
                                     </td>
                                 </tr>
                             </table>
@@ -87,11 +87,37 @@
                 <div id="checkoutRightMidColumn">
                     <div id="checkoutRightMidTopBox">
                         <p>Your product will be delivered in the next 3 days!</p>
-                        <p>Shipping costs are €3.</p>
+                        <p>Shipping costs are €#{checkoutManager.shippingCost}.</p>
+                        <p>Thanks for choosing the Media Shop!</p>
                     </div>
 
                     <div id="checkoutRightMidBottombox">
-
+                        <table>
+                            <tr>
+                                <td>
+                                    <p style="text-align: right;">subtotal :</p>
+                                </td>
+                                <td>
+                                    <p>€#{cartManager.totalPrice}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="text-align: right;">shipping costs :</p>
+                                </td>
+                                <td>
+                                    <p>€#{checkoutManager.shippingCost}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="text-align: right;">total costs :</p>
+                                </td>
+                                <td>
+                                    <p>€#{checkoutManager.totalPrice}</p>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </ui:define>

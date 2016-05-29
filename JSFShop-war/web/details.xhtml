@@ -16,11 +16,6 @@
             <ui:define name="content">
                 <div id="categoryLeftColumn">
                     <ui:repeat var="category" value="#{categoryManager.categories}">
-                        <h:panelGroup layout="block" rendered="#{category.cat_type == categoryManager.catId}" id="selectedCategory">
-                            <div id="selectedCategory">
-                                <span>#{category.media}</span>
-                            </div>
-                        </h:panelGroup>
                         <h:panelGroup layout="block" rendered="#{category.cat_type != categoryManager.catId}" id="selectedCategory">
                             <div class="categoryBoxLeft">
                                 <h:link outcome="category.xhtml">
@@ -35,9 +30,12 @@
                     <div id="imageColumn">
                         <img class="detail" src="${initParam.productImagePath}#{detailsManager.media.title}.jpg" alt="#{detailsManager.media.title}"/>
                         <hr/>
-                        <h:commandButton value="add to cart" onclick="#{cartManager.addToCart(detailsManager.media.id)}">
-                            <f:phaseListener type="contoller.InterceptorManager"/>
-                        </h:commandButton>
+                        <h:form>
+                            <h:commandButton value="add to cart" type="submit" action="#{cartManager.addToCart(detailsManager.media.id)}">
+                                <f:phaseListener type="contoller.InterceptorManager"/>
+                                <f:param name="medTypeId" value="#{detailsManager.media.id}"/>
+                            </h:commandButton>
+                        </h:form>
                     </div>
                     <div id="detailColumn">
                         <c:choose>

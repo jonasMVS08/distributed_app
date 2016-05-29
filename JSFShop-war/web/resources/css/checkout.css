@@ -16,9 +16,12 @@ and open the template in the editor.
 }
 
 #checkoutLeftMidColumn {
-    height: 380px;
-    width: 55%;
-    
+    height: 350px;
+    width: 45%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;
+    margin-bottom: 20px;
     float: left;
     background: #F5EDCC;
 }
@@ -42,12 +45,12 @@ and open the template in the editor.
 }
 
 #checkoutRightMidBottombox {
-    height: 40%;
-    width: 80%;
+    height: 45%;
+    width: 70%;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 5%;
     margin-bottom: 5%;
+    padding-left: 10%;
     float: left;
-    background: #476A6F;
+    background: #7EB09B;
 }

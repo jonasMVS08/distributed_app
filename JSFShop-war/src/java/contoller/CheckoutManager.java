@@ -39,6 +39,8 @@ public class CheckoutManager implements Serializable {
     @NotNull
     private String ccNumber;
     
+    private float shippingCost = 3;
+    
     @EJB
     private ShoppingCartRemote shoppingCart;
 
@@ -104,5 +106,14 @@ public class CheckoutManager implements Serializable {
     
     public void setCcNumber(String ccNumber) {
         this.ccNumber = ccNumber;
+    }
+    
+    public float getShippingCost() {
+        return shippingCost;
+    }
+    
+    public float getTotalPrice() {
+        float price = shoppingCart.getTotalPrice() + shippingCost;
+        return price;
     }
 }
