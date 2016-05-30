@@ -44,9 +44,7 @@
                             </h:form>
                         </c:if>
                         <c:if test="#{cartManager.cartSize != 0 }">
-                            <h:form style="float: left;margin-left: 3%;">
-                                <h:commandButton value="checkout.xhtml" type="submit" />
-                            </h:form>
+                            <h:button value="checkout" outcome="checkout.xhtml" style="float: left; margin-left: 3%"/>
                         </c:if>
                         <c:if test="#{cartManager.discount == true}">
                             <h:form style="float: left;margin-left: 3%;">

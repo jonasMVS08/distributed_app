@@ -10,8 +10,9 @@ and open the template in the editor.
 
 #checkoutTopBox {
     height: 70px;
-    width: 100%;
+    width: 95%;
     float: top;
+    padding-left: 5%;
     background: #C5C9A4;
 }
 

@@ -13,6 +13,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 import session.CustomerFacade;
 import session.ShoppingCartRemote;
 
@@ -27,16 +29,22 @@ public class CheckoutManager implements Serializable {
 
     private Customer customer;
     @NotNull
+    @Size(min = 2, max = 16, message = "Error: Fill in a name\n")
     private String name;
     @NotNull
+    @Email(message = "Error: Not a valid email address\n")
     private String email;
     @NotNull
+    @Size(min = 9, max = 14, message = "Error: Fill in a correct phone number\n")
     private String phone;
     @NotNull
+    @Size(min = 5, max = 32, message = "Error: Fill in an address\n")
     private String address;
     @NotNull
+    @Size(min = 4, max = 6, message = "Error: Fill in a city region\n")
     private String cityRegion;
     @NotNull
+    @Size(min = 16, max = 19, message = "Error: Fill in a creditcard number\n")
     private String ccNumber;
     private Integer uId;
     

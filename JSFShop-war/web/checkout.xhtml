@@ -15,10 +15,8 @@
 
             <ui:define name="content">
                 <div id="checkoutTopBox">
-                    <div style="align-content: center; padding-left: 20px;">
                         <h3 style="text-align: left">Checkout</h3>
                         <p style="text-align: left;">In order to purchase the items in your shopping cart, please provide us with the following information:</p>
-                    </div>
                 </div>
 
                 <div id="checkoutLeftMidColumn">
@@ -31,6 +29,7 @@
                                     </td>
                                     <td>
                                         <h:inputText id="name" value="#{checkoutManager.name}" style="min-width: 90%"/>
+                                        <!--<h:message id="m3" for="name" style="color:red"/>-->
                                     </td>
                                 </tr>
                                 <tr>
@@ -76,8 +75,8 @@
                             </table>
                             <div style="align-content: flex-end">
                                 <h:commandButton value="Submit purchase" action="#{checkoutManager.submit()}"/>
-                                    <!--<f:ajax execute="@form" render="@form" />
-                                </h:commandButton>-->
+                                <!--<f:ajax execute="@form" render="@form" />
+                            </h:commandButton>-->
                             </div>
                         </h:form>
                     </div>
@@ -87,7 +86,13 @@
                     <div id="checkoutRightMidTopBox">
                         <p>Your product will be delivered in the next 3 days!</p>
                         <p>Shipping costs are €#{checkoutManager.shippingCost}.</p>
-                        <p>Thanks for choosing the Media Shop!</p>
+                        <!--<p>Thanks for choosing the Media Shop!</p>-->
+                        <h:message id="m1" for="name" style="color:red"/>
+                        <h:message id="m2" for="phone" style="color:red"/>
+                        <h:message id="m3" for="email" style="color:red"/>
+                        <h:message id="m4" for="address" style="color:red"/>
+                        <h:message id="m5" for="cityRegion" style="color:red"/>
+                        <h:message id="m6" for="ccNumber" style="color:red"/>
                     </div>
 
                     <div id="checkoutRightMidBottombox">
