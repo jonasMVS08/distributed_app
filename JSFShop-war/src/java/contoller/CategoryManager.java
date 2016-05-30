@@ -7,6 +7,7 @@ package contoller;
 
 import entity.Category;
 import entity.MediaType;
+import entity.Order;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -18,8 +19,7 @@ import javax.inject.Named;
 import session.CategoryFacade;
 import session.CdFacade;
 import session.MediaTypeFacade;
-import session.ShoppingCart;
-import session.ShoppingCartRemote;
+import session.OrderFacade;
 import session.TrackFacade;
 
 /**
@@ -30,6 +30,9 @@ import session.TrackFacade;
 @ManagedBean
 @RequestScoped
 public class CategoryManager implements Serializable{
+
+    @EJB
+    OrderFacade orderFacade;
 
     private List<Category> categories;
     private List<MediaType> mediaTypes;
@@ -42,6 +45,7 @@ public class CategoryManager implements Serializable{
     @EJB
     TrackFacade trackFacade;
     
+    
     @ManagedProperty(value="#{param.catId}")
     private char catId;
     @ManagedProperty(value="#{param.addId}")
@@ -49,6 +53,7 @@ public class CategoryManager implements Serializable{
     
     @PostConstruct
     public void init() {
+        int in = 1;
         categories = categoryFacade.findAll(); 
     }
     

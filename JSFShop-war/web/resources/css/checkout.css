@@ -17,7 +17,7 @@ and open the template in the editor.
 }
 
 #checkoutLeftMidColumn {
-    height: 350px;
+    height: auto;
     width: 45%;
     margin-left: 5%;
     margin-right: 5%;

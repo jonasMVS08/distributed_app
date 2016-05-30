@@ -16,51 +16,49 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
  *
  * @author Jonas
  */
 @Entity
-@Table(name="ORDER")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int orderId;
+    private int id;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="customerId")
     private Customer customer;
     private float totalPrice;
-    private Timestamp dateCreated;
     @ManyToMany
     private List<MediaType> products;
 
-
-    public int getOrderId() {
-        return orderId;
+    public Order() {
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public Order(int id, Customer customer, float totalPrice, List<MediaType> products) {
+        this.id = id;
+        this.customer = customer;
+        this.totalPrice = totalPrice;
+        this.products = products;
+    }
+    
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public float getTotalPrice() {
         return totalPrice;
     }
 
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public Timestamp getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Timestamp dateCreated) {
-        this.dateCreated = dateCreated;
     }
 
     public Customer getCustomer() {
@@ -82,7 +80,7 @@ public class Order implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) orderId;
+        hash += (int) id;
         return hash;
     }
 
@@ -93,7 +91,7 @@ public class Order implements Serializable {
             return false;
         }
         Order other = (Order) object;
-        if (this.orderId != other.orderId) {
+        if (this.id != other.id) {
             return false;
         }
         return true;
@@ -101,7 +99,7 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Order[ id=" + orderId + " ]";
+        return "entity.Order[ id=" + id + " ]";
     }
     
 }

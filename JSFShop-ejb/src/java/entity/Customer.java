@@ -91,13 +91,13 @@ public class Customer implements Serializable {
         this.ccNumber = ccNumber;
     }
 
-    public Collection<Order> getOrders() {
+    /*public Collection<Order> getOrders() {
         return orders;
     }
 
     public void setOrders(Collection<Order> orders) {
         this.orders = orders;
-    }
+    }*/
 
     @Override
     public int hashCode() {

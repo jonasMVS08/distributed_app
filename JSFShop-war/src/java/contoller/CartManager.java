@@ -31,9 +31,10 @@ public class CartManager implements Serializable{
     private int product;
     private int cartSize;
     private int quantity;
-    private ArrayList<Integer> products;
+    private ArrayList<MediaType> products;
     private String totalPrice;
     private boolean discount = false;
+    private String shipping;
        
     public void addToCart(int productId){
         int j = shoppingCart.getUid();
@@ -59,13 +60,13 @@ public class CartManager implements Serializable{
 
     public int getProduct() {
         return product;
-    }
+    } 
 
     public ArrayList<MediaType> getProducts() {
         return shoppingCart.getProducts();
     }
 
-    public void setProducts(ArrayList<Integer> products) {
+    public void setProducts(ArrayList<MediaType> products) {
         this.products = products;
     }
 
@@ -97,6 +98,10 @@ public class CartManager implements Serializable{
 
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = Float.toString(totalPrice);
+    }
+
+    public String getShipping() {
+        return String.format("%.2f",(shoppingCart.getTotalPrice() + 3));
     }
     
 }
