@@ -29,22 +29,23 @@ public class CheckoutManager implements Serializable {
 
     private Customer customer;
     @NotNull
-    @Size(min = 2, max = 16, message = "Error: Fill in a name\n")
+    @Size(min = 2, max = 16, message = "Fill in a name\n")
     private String name;
     @NotNull
-    @Email(message = "Error: Not a valid email address\n")
+    @Email(message = "Invalid email address\n")
+    @Size(min = 4, max = 30, message = "Invalid email address\n")
     private String email;
     @NotNull
-    @Size(min = 9, max = 14, message = "Error: Fill in a correct phone number\n")
+    @Size(min = 9, max = 14, message = "Invalid phone number\n")
     private String phone;
     @NotNull
-    @Size(min = 5, max = 32, message = "Error: Fill in an address\n")
+    @Size(min = 5, max = 32, message = "Invalid address\n")
     private String address;
     @NotNull
-    @Size(min = 4, max = 6, message = "Error: Fill in a city region\n")
+    @Size(min = 4, max = 6, message = "Invalid city region\n")
     private String cityRegion;
     @NotNull
-    @Size(min = 16, max = 19, message = "Error: Fill in a creditcard number\n")
+    @Size(min = 16, max = 19, message = "Invalid creditcard number\n")
     private String ccNumber;
     private Integer uId;
     

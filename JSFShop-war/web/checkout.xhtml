@@ -15,8 +15,8 @@
 
             <ui:define name="content">
                 <div id="checkoutTopBox">
-                        <h3 style="text-align: left">Checkout</h3>
-                        <p style="text-align: left;">In order to purchase the items in your shopping cart, please provide us with the following information:</p>
+                    <h3 style="text-align: left">Checkout</h3>
+                    <p style="text-align: left;">In order to purchase the items in your shopping cart, please provide us with the following information:</p>
                 </div>
 
                 <div id="checkoutLeftMidColumn">
@@ -25,56 +25,104 @@
                             <table id="tableCategory">
                                 <tr>
                                     <td>
-                                        <p style="text-align: right;">Name :</p>
+                                        <p class="tableBox" style="text-align: right; margin-top: 10px;">Name :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="name" value="#{checkoutManager.name}" style="min-width: 90%"/>
+                                        <h:inputText id="name" class="tableBox" value="#{checkoutManager.name}" style="margin-top: 10px; min-width: 90%"/>
                                         <!--<h:message id="m3" for="name" style="color:red"/>-->
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p style="text-align: right;">Phone number :</p>
+                                        <p class="errorTableBox"> </p>
                                     </td>
                                     <td>
-                                        <h:inputText id="phone" value="#{checkoutManager.phone}" style="min-width: 90%"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p style="text-align: right;">Email :</p>
-                                    </td>
-                                    <td>
-                                        <h:inputText id="email" value="#{checkoutManager.email}" style="min-width: 90%"/>
+                                        <h:message class="errorTableBox" id="m1" for="name" style="color:red"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p style="text-align: right;">Address :</p>
+                                        <p class="tableBox" style="text-align: right;">Phone number :</p>
                                     </td>
                                     <td>
-                                        <h:inputText id="address" value="#{checkoutManager.address}" style="min-width: 90%"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p style="text-align: right;">Postal Code :</p>
-                                    </td>
-                                    <td>
-                                        <h:inputText id="cityRegion" value="#{checkoutManager.cityRegion}" style="min-width: 90%"/>
+                                        <h:inputText  id="phone" class="tableBox" value="#{checkoutManager.phone}" style="min-width: 90%"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p style="text-align: right;">Credit Card number :</p>
+                                        <p class="errorTableBox"> </p>
                                     </td>
                                     <td>
-                                        <h:inputText id="ccNumber" value="#{checkoutManager.ccNumber}" style="min-width: 90%"/>
+                                        <h:message class="tableBox" id="m2" for="phone" style="color:red"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="tableBox" style="text-align: right;">Email :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="email" class="tableBox" value="#{checkoutManager.email}" style="min-width: 90%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="errorTableBox"> </p>
+                                    </td>
+                                    <td>
+                                        <h:message id="m3" class="tableBox" for="email" style="color:red"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="tableBox" style="text-align: right;">Address :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="address" class="tableBox" value="#{checkoutManager.address}" style="min-width: 90%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="errorTableBox"> </p>
+                                    </td>
+                                    <td>
+                                        <h:message id="m4" class="tableBox" for="address" style="color:red"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="tableBox" style="text-align: right;">Postal Code :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="cityRegion" class="tableBox" value="#{checkoutManager.cityRegion}" style="min-width: 90%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="errorTableBox"> </p>
+                                    </td>
+                                    <td>
+                                        <h:message id="m5" class="tableBox" for="cityRegion" style="color:red"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="tableBox" style="text-align: right;">Credit Card number :</p>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="ccNumber" class="tableBox" value="#{checkoutManager.ccNumber}" style="min-width: 90%"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="errorTableBox"> </p>
+                                    </td>
+                                    <td>
+                                        <h:message id="m6" class="tableBox" for="ccNumber" style="color:red"/>
                                     </td>
                                 </tr>
                             </table>
                             <div style="align-content: flex-end">
-                                <h:commandButton value="Submit purchase" action="#{checkoutManager.submit()}"/>
+                                <h:commandButton style="margin-top: 10px;" value="Submit purchase" action="#{checkoutManager.submit()}"/>
                                 <!--<f:ajax execute="@form" render="@form" />
                             </h:commandButton>-->
                             </div>
@@ -86,13 +134,7 @@
                     <div id="checkoutRightMidTopBox">
                         <p>Your product will be delivered in the next 3 days!</p>
                         <p>Shipping costs are €#{checkoutManager.shippingCost}.</p>
-                        <!--<p>Thanks for choosing the Media Shop!</p>-->
-                        <h:message id="m1" for="name" style="color:red"/>
-                        <h:message id="m2" for="phone" style="color:red"/>
-                        <h:message id="m3" for="email" style="color:red"/>
-                        <h:message id="m4" for="address" style="color:red"/>
-                        <h:message id="m5" for="cityRegion" style="color:red"/>
-                        <h:message id="m6" for="ccNumber" style="color:red"/>
+                        <p>Thanks for choosing the Media Shop!</p>
                     </div>
 
                     <div id="checkoutRightMidBottombox">

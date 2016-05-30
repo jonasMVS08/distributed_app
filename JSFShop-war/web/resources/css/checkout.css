@@ -55,3 +55,14 @@ and open the template in the editor.
     float: left;
     background: #7EB09B;
 }
+
+.tableBox {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.errorTableBox {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 20px;
+}
